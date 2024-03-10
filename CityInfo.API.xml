@@ -1,0 +1,488 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CityInfo.Api</name>
+    </assembly>
+    <members>
+        <member name="T:CityInfo.API.Controllers.AuthenticationController">
+            <summary>
+            Represents the controller for authentication.
+            </summary>
+        </member>
+        <member name="T:CityInfo.API.Controllers.AuthenticationController.AuthenticationRequestBody">
+            <summary>
+            Represents the request body for authentication.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Controllers.AuthenticationController.AuthenticationRequestBody.UserName">
+            <summary>
+            Gets or sets the username.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Controllers.AuthenticationController.AuthenticationRequestBody.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Controllers.AuthenticationController.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CityInfo.API.Controllers.AuthenticationController"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+        </member>
+        <member name="M:CityInfo.API.Controllers.AuthenticationController.Authenticate(CityInfo.API.Controllers.AuthenticationController.AuthenticationRequestBody)">
+            <summary>
+            Authenticates the user and generates a token.
+            </summary>
+            <param name="authenticationRequestBody">The authentication request body.</param>
+            <returns>The generated token.</returns>
+        </member>
+        <member name="T:CityInfo.API.Controllers.InvoicesController">
+            <summary>
+            Represents a controller for managing invoices.
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Controllers.InvoicesController.#ctor(CityInfo.API.Services.IInvoiceRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CityInfo.API.Controllers.InvoicesController"/> class.
+            </summary>
+            <param name="invoiceRepository">The invoice repository.</param>
+            <param name="mapper">The mapper.</param>
+        </member>
+        <member name="M:CityInfo.API.Controllers.InvoicesController.GetInvoices(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Retrieves a list of invoices.
+            </summary>
+            <param name="name">The name of the invoice.</param>
+            <param name="searchQuery">The search query.</param>
+            <param name="pageNumber">The page number.</param>
+            <param name="pageSize">The page size.</param>
+            <returns>A list of invoices.</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.InvoicesController.GetInvoice(System.Int32)">
+            <summary>
+            Retrieves an invoice by ID.
+            </summary>
+            <param name="invoiceId">The ID of the invoice.</param>
+            <returns>The invoice.</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.InvoicesController.CreateInvoice(CityInfo.API.Models.InvoiceForCreationDto)">
+            <summary>
+            Creates a new invoice.
+            </summary>
+            <param name="invoice">The invoice to create.</param>
+            <returns>The created invoice.</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.InvoicesController.UpdateInvoice(System.Int32,CityInfo.API.Models.InvoiceForUpdateDto)">
+            <summary>
+            Updates an invoice.
+            </summary>
+            <param name="invoiceId">The ID of the invoice.</param>
+            <param name="invoice">The updated invoice.</param>
+            <returns>The updated invoice.</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.InvoicesController.PartiallyUpdateInvoice(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{CityInfo.API.Models.InvoiceForUpdateDto})">
+            <summary>
+            Partially updates an invoice.
+            </summary>
+            <param name="invoiceId">The ID of the invoice.</param>
+            <param name="patchDocument">The JSON patch document containing the updates.</param>
+            <returns>No content.</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.InvoicesController.DeleteInvoice(System.Int32)">
+            <summary>
+            Deletes an invoice.
+            </summary>
+            <param name="invoiceId">The ID of the invoice to delete.</param>
+            <returns>No content.</returns>
+        </member>
+        <member name="T:CityInfo.API.DbContexts.InvoiceContext">
+            <summary>
+            Represents the context for managing invoices.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.DbContexts.InvoiceContext.Invoices">
+            <summary>
+            Gets or sets the DbSet of invoices.
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.DbContexts.InvoiceContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{CityInfo.API.DbContexts.InvoiceContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CityInfo.API.DbContexts.InvoiceContext"/> class.
+            </summary>
+            <param name="options">The DbContext options.</param>
+        </member>
+        <member name="T:CityInfo.API.Entities.Invoice">
+            <summary>
+            Represents an invoice.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Entities.Invoice.Id">
+            <summary>
+            Gets or sets the ID of the invoice.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Entities.Invoice.InvoiceNumber">
+            <summary>
+            Gets or sets the name of the invoice.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Entities.Invoice.Note">
+            <summary>
+            Gets or sets the description of the invoice.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Entities.Invoice.Date">
+            <summary>
+            Gets or sets the date of the invoice.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Entities.Invoice.DueDate">
+            <summary>
+            Gets or sets the due date of the invoice.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Entities.Invoice.ClientName">
+            <summary>
+            Gets or sets the name of the client.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Entities.Invoice.ClientAddress">
+            <summary>
+            Gets or sets the address of the client.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Entities.Invoice.Items">
+            <summary>
+            Gets or sets the items of the invoice.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Entities.Invoice.TotalAmount">
+            <summary>
+            Gets or sets the total amount of the invoice.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Entities.Invoice.Paid">
+            <summary>
+            Gets or sets a value indicating whether the invoice is paid.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Entities.Invoice.PaymentMethod">
+            <summary>
+            Gets or sets the payment method of the invoice.
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Entities.Invoice.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.List{CityInfo.Api.Entities.InvoiceItem})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CityInfo.API.Entities.Invoice"/> class with the specified name.
+            </summary>
+            <param name="invoiceNumber">The name of the invoice.</param>
+            <param name="clientName">The name of the client.</param>
+            <param name="clientAddress">The address of the client.</param>
+            <param name="paymentMethod">The payment method of the invoice.</param>
+            <param name="items">The items of the invoice.</param>
+        </member>
+        <member name="T:CityInfo.API.Models.InvoiceDto">
+            <summary>
+            Represents an invoice data transfer object.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Models.InvoiceDto.Id">
+            <summary>
+            Gets or sets the ID of the invoice.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Models.InvoiceDto.InvoiceNumber">
+            <summary>
+            Gets or sets the name of the invoice.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Models.InvoiceDto.Note">
+            <summary>
+            Gets or sets the description of the invoice.
+            </summary>
+        </member>
+        <member name="T:CityInfo.API.Models.InvoiceForCreationDto">
+            <summary>
+            Represents an invoice for creation.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Models.InvoiceForCreationDto.InvoiceNumber">
+            <summary>
+            Gets or sets the name of the invoice.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Models.InvoiceForCreationDto.Note">
+            <summary>
+            Gets or sets the description of the invoice.
+            </summary>
+        </member>
+        <member name="T:CityInfo.API.Models.InvoiceForUpdateDto">
+            <summary>
+            Represents an invoice for creation.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Models.InvoiceForUpdateDto.InvoiceNumber">
+            <summary>
+            Gets or sets the name of the invoice.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Models.InvoiceForUpdateDto.Note">
+            <summary>
+            Gets or sets the description of the invoice.
+            </summary>
+        </member>
+        <member name="T:CityInfo.API.Profiles.CityProfile">
+            <summary>
+            Represents the profile for mapping entities to InvoiceDto models.
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Profiles.CityProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CityInfo.API.Profiles.CityProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:CityInfo.API.Services.IInvoiceRepository">
+            <summary>
+            Represents a repository for managing invoices.
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Services.IInvoiceRepository.GetInvoicesAsync">
+            <summary>
+            Retrieves all invoices asynchronously.
+            </summary>
+            <returns>A task that represents the asynchronous operation. The task result contains the collection of invoices.</returns>
+        </member>
+        <member name="M:CityInfo.API.Services.IInvoiceRepository.GetInvoicesAsync(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Retrieves invoices asynchronously based on specified parameters.
+            </summary>
+            <param name="name">The name parameter.</param>
+            <param name="searchQuery">The search query parameter.</param>
+            <param name="pageNumber">The page number parameter.</param>
+            <param name="pageSize">The page size parameter.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains the collection of invoices and pagination metadata.</returns>
+        </member>
+        <member name="M:CityInfo.API.Services.IInvoiceRepository.GetInvoiceAsync(System.Int32)">
+            <summary>
+            Retrieves an invoice asynchronously based on the specified invoice ID.
+            </summary>
+            <param name="invoiceId">The invoice ID.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains the invoice.</returns>
+        </member>
+        <member name="M:CityInfo.API.Services.IInvoiceRepository.InvoiceExistsAsync(System.Int32)">
+            <summary>
+            Checks if an invoice exists asynchronously based on the specified city ID.
+            </summary>
+            <param name="cityId">The city ID.</param>
+            <returns>A task that represents the asynchronous operation. The task result indicates whether the invoice exists.</returns>
+        </member>
+        <member name="M:CityInfo.API.Services.IInvoiceRepository.SaveChangesAsync">
+            <summary>
+            Saves changes asynchronously.
+            </summary>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:CityInfo.API.Services.IInvoiceRepository.AddInvoice(CityInfo.API.Entities.Invoice)">
+            <summary>
+            Adds an invoice entity.
+            </summary>
+            <param name="invoiceEntity">The invoice entity to add.</param>
+        </member>
+        <member name="M:CityInfo.API.Services.IInvoiceRepository.DeleteInvoice(CityInfo.API.Entities.Invoice)">
+            <summary>
+            Deletes an invoice entity.
+            </summary>
+            <param name="invoiceEntity">The invoice entity to delete.</param>
+        </member>
+        <member name="T:CityInfo.API.Services.InvoiceRepository">
+            <summary>
+            Represents a repository for managing invoices.
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Services.InvoiceRepository.#ctor(CityInfo.API.DbContexts.InvoiceContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CityInfo.API.Services.InvoiceRepository"/> class.
+            </summary>
+            <param name="context">The invoice context.</param>
+        </member>
+        <member name="M:CityInfo.API.Services.InvoiceRepository.AddInvoice(CityInfo.API.Entities.Invoice)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CityInfo.API.Services.InvoiceRepository.DeleteInvoice(CityInfo.API.Entities.Invoice)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CityInfo.API.Services.InvoiceRepository.GetInvoiceAsync(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CityInfo.API.Services.InvoiceRepository.GetInvoicesAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:CityInfo.API.Services.InvoiceRepository.GetInvoicesAsync(System.String,System.String,System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CityInfo.API.Services.InvoiceRepository.InvoiceExistsAsync(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CityInfo.API.Services.InvoiceRepository.SaveChangesAsync">
+            <inheritdoc/>
+        </member>
+        <member name="T:CityInfo.API.Services.PaginationMetadata">
+            <summary>
+            Represents the metadata for pagination.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Services.PaginationMetadata.TotalItemCount">
+            <summary>
+            Gets or sets the total item count.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Services.PaginationMetadata.TotalPageCount">
+            <summary>
+            Gets or sets the total page count.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Services.PaginationMetadata.PageSize">
+            <summary>
+            Gets or sets the page size.
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Services.PaginationMetadata.CurrentPage">
+            <summary>
+            Gets or sets the current page number.
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Services.PaginationMetadata.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CityInfo.API.Services.PaginationMetadata"/> class.
+            </summary>
+            <param name="totalItemCount">The total item count.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="currentPage">The current page number.</param>
+        </member>
+        <member name="T:CityInfo.Api.Entities.InvoiceItem">
+            <summary>
+            Represents an invoice item.
+            </summary>
+        </member>
+        <member name="P:CityInfo.Api.Entities.InvoiceItem.Id">
+            <summary>
+            Gets or sets the ID of the invoice item.
+            </summary>
+        </member>
+        <member name="P:CityInfo.Api.Entities.InvoiceItem.Description">
+            <summary>
+            Gets or sets the description of the invoice item.
+            </summary>
+        </member>
+        <member name="P:CityInfo.Api.Entities.InvoiceItem.UnitType">
+            <summary>
+            Gets or sets the unit type of the invoice item.
+            </summary>
+        </member>
+        <member name="P:CityInfo.Api.Entities.InvoiceItem.Quantity">
+            <summary>
+            Gets or sets the quantity of the invoice item.
+            </summary>
+        </member>
+        <member name="P:CityInfo.Api.Entities.InvoiceItem.PricePerUnit">
+            <summary>
+            Gets or sets the price per unit of the invoice item.
+            </summary>
+        </member>
+        <member name="P:CityInfo.Api.Entities.InvoiceItem.TotalPrice">
+            <summary>
+            Gets or sets the total price of the invoice item.
+            </summary>
+        </member>
+        <member name="P:CityInfo.Api.Entities.InvoiceItem.Invoice">
+            <summary>
+            Gets or sets the invoice associated with the invoice item.
+            </summary>
+        </member>
+        <member name="M:CityInfo.Api.Entities.InvoiceItem.#ctor(System.Int32,System.String,System.Int32,System.Decimal,CityInfo.API.Entities.Invoice)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CityInfo.Api.Entities.InvoiceItem"/> class.
+            </summary>
+            <param name="id">The ID of the invoice item.</param>
+            <param name="description">The description of the invoice item.</param>
+            <param name="quantity">The quantity of the invoice item.</param>
+            <param name="pricePerUnit">The price per unit of the invoice item.</param>
+            <param name="invoice">The invoice associated with the invoice item.</param>
+        </member>
+        <member name="T:CityInfo.Api.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.Api.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.Api.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.Api.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CityInfo.Api.Migrations.RenameFields">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.Api.Migrations.RenameFields.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.Api.Migrations.RenameFields.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.Api.Migrations.RenameFields.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CityInfo.Api.Migrations.AddInvoiceItem">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.Api.Migrations.AddInvoiceItem.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.Api.Migrations.AddInvoiceItem.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.Api.Migrations.AddInvoiceItem.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SwaggerHeaderAttribute">
+            <summary>
+            Represents a custom attribute for Swagger headers.
+            </summary>
+        </member>
+        <member name="T:SwaggerHeaderAttribute.HeaderNameEnum">
+            <summary>
+            Gets or sets the name of the header.
+            </summary>
+        </member>
+        <member name="F:SwaggerHeaderAttribute.HeaderNameEnum.Pagination">
+            <summary>
+            Represents the header names for pagination.
+            </summary>
+        </member>
+        <member name="P:SwaggerHeaderAttribute.HeaderName">
+            <summary>
+            Gets the name of the header.
+            </summary>
+        </member>
+        <member name="M:SwaggerHeaderAttribute.#ctor(SwaggerHeaderAttribute.HeaderNameEnum)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SwaggerHeaderAttribute"/> class with the specified header name.
+            </summary>
+            <param name="headerName">The name of the header.</param>
+        </member>
+        <member name="T:AddResponseHeadersFilter">
+            <summary>
+            Represents a filter for adding response headers to an operation.
+            </summary>
+        </member>
+        <member name="M:AddResponseHeadersFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Applies the filter to the specified operation.
+            </summary>
+            <param name="operation">The operation to apply the filter to.</param>
+            <param name="context">The context of the operation filter.</param>
+        </member>
+    </members>
+</doc>
